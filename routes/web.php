@@ -1,8 +1,52 @@
 <?php
-
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\NewsController;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\AddNewsController;
+use App\Http\Controllers\CategoryNewsContoller;
+
+$text = 'Приветствуя Вас на моей странице!';
+$title = 'Первый сайт на Laravel';
+
+Route::get('/', function () use ($text, $title){
+    return <<<php
+<!doctype   html>
+<html lang="en">
+<head>
+    <meta charset='UTF-8'>
+    <title>$title</title>
+</head>
+<body>
+    <h1>$text</h1>
+    Моя первая страница на Laravel
+</body>
+</html>
+php;
+});
+
+
+Route::group(['prefix' => 'news', 'as' => 'news.'], function() {
+Route::get('/', [NewsController::class, 'index'])
+    ->name('index');
+Route::get('/{id}', [NewsController::class, 'show'])
+  ->where('id','\d+')
+    ->name('show');
+Route::get('/create', [NewsController::class, 'create'])
+    ->name('create');
+});
+
+Route::get('/login', [AuthController::class, 'index'])
+    ->name('login');
+
+Route::get('/category', [CategoryNewsContoller::class, 'index'])
+    ->name('category');
+
+
+/*Route::get('/add_news', [AddNewsController::class, 'add_news'])
+    ->name('add_news');*/
 
 /*
+ * <div><a href="/">Home</a><a href="/catery">Category</a></div>
 |--------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
@@ -13,6 +57,4 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
