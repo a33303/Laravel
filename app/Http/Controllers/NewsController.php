@@ -1,32 +1,32 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Services\FakeNewsService;
 Use Illuminate\Http\Request;
 
 class NewsController extends Controller
 {
-    protected $ListNews = [
-        'Новость 1',
-        'Новость 2',
-        'Новость 3',
-        'Новость 4',
-        'Новость 5',
-        'Новость 6'
-    ];
+
     public function index()
     {
+        $listNews = (new FakeNewsService())->getNews();
+
         if (isset($_GET['title']) && isset($_GET['text'])) {
-            $this->ListNews[] = $_GET['title'];
+            $this->listNews[] = $_GET['title'];
 //            array_push($this->ListNews, $_GET['title']);
         }
 
-        return view('news.index', ['listNews' => $this->ListNews]);
+        return view('news.index', ['listNews' => $listNews]);
     }
 
-    public function show(int $id)
+    public function show(FakeNewsService $service, int $id)
     {
-        $news = $this->ListNews[$id] ?? "Not found";
+        $allNews = $service->getNews();
+        $news = $allNews[$id] ?? "Not found";
         return view('news.show', ['news' => $news]);
+
+       /* $news = $this->ListNews[$id] ?? "Not found";
+        return view('news.show', ['news' => $news]);*/
     }
 
    /* public function category()

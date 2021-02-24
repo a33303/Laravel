@@ -9,10 +9,6 @@ class IndexController extends Controller
 {
     public function index()
     {
-    return <<<php
-    <h1>Точка входы для админа</h1>
-    тут какой-то текст<br>
-    <a href="/">Переход на главную страницу</a>
-    php;
-}
+        return view('admin.index');
+    }
 }

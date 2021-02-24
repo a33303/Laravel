@@ -2,8 +2,10 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\AddNewsController;
 use App\Http\Controllers\CategoryNewsContoller;
+use App\Http\Controllers\Admin\IndexController;
+use App\Http\Controllers\Admin\NewsController as AdminNewsController;
+
 
 $text = 'Приветствуя Вас на моей странице!';
 $title = 'Первый сайт на Laravel';
@@ -24,15 +26,20 @@ Route::get('/', function () use ($text, $title){
 php;
 });
 
+Route::group(['prefix' => 'admin', 'as' => 'admin.'], function() {
+    Route::get('/', [IndexController::class, 'index'])
+        ->name('admin');
+    Route::resource('news', AdminNewsController::class);
+});
 
 Route::group(['prefix' => 'news', 'as' => 'news.'], function() {
-Route::get('/', [NewsController::class, 'index'])
-    ->name('index');
-Route::get('/{id}', [NewsController::class, 'show'])
-  ->where('id','\d+')
-    ->name('show');
-Route::get('/create', [NewsController::class, 'create'])
-    ->name('create');
+    Route::get('/', [NewsController::class, 'index'])
+        ->name('index');
+    Route::get('/{id}', [NewsController::class, 'show'])
+      ->where('id','\d+')
+        ->name('show');
+    Route::get('/create', [NewsController::class, 'create'])
+        ->name('create');
 });
 
 Route::get('/login', [AuthController::class, 'index'])
