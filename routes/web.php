@@ -4,6 +4,8 @@ use App\Http\Controllers\NewsController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryNewsContoller;
 use App\Http\Controllers\Admin\IndexController;
+use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\Admin\NewsController as AdminNewsController;
 
 
@@ -30,6 +32,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function() {
     Route::get('/', [IndexController::class, 'index'])
         ->name('admin');
     Route::resource('news', AdminNewsController::class);
+    Route::resource('categories', CategoryController::class);
 });
 
 Route::group(['prefix' => 'news', 'as' => 'news.'], function() {
@@ -40,8 +43,11 @@ Route::group(['prefix' => 'news', 'as' => 'news.'], function() {
         ->name('show');
     Route::get('/create', [NewsController::class, 'create'])
         ->name('create');
+
 });
 
+Route::get('/feedback', [FeedbackController::class, 'index'])
+    ->name('feedback');
 Route::get('/login', [AuthController::class, 'index'])
     ->name('login');
 

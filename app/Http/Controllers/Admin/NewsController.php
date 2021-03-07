@@ -15,6 +15,12 @@ class NewsController extends Controller
      */
     public function index(Request $request)
     {
-        dd($request->all(), "hello name", [1,2,3]);
+        $news = [];
+        return view('admin.news.index', ['news' => $news]);
+    }
+
+    public function create()
+    {
+        return view('admin.news.add');
     }
 }
