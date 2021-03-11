@@ -29,6 +29,10 @@
                         <td>{{ $news->title }}</td>
                         <td>{{ $news->category }}</td>
                         <td>{{ $news->created_at }}</td>
+                        <td><a href="{{ route('admin.show', ['$news' => $news->id]) }}">Пр.</a>
+                            &nbsp; <a href="">Ред.</a>
+                            &nbsp; <a href="">Уд.</a>
+                        </td>
                     </tr>
                 @empty
                     <h2>Записей нет</h2>

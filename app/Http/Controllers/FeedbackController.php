@@ -34,7 +34,7 @@ class FeedbackController extends Controller
     public function getExport(Request $request)
     {
         $request->validate([
-           'feedback' => ['name', 'email', 'password', ['created_at']]
+           'feedback' => ['name', 'email', 'password']
         ]);
 
         if (Storage::put('file.txt', var_export($request->except('_token'), true)));

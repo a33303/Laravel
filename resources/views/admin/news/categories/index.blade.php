@@ -29,6 +29,10 @@
                                 <td>{{ $category->title }}</td>
                                 <td>{{ $category->slug }}</td>
                                 <td>{{ $category->created_at }}</td>
+                                <td><a href="{{ route('admin.categories.show', ['category' => $category->id]) }}">Пр.</a>
+                                    &nbsp; <a href="">Ред.</a>
+                                    &nbsp; <a href="">Уд.</a>
+                                </td>
                             </tr>
                         @empty
                             <h2>Записей нет</h2>

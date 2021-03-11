@@ -23,10 +23,6 @@
                         <label for="email">E-mail</label>
                         <input class="form-control" name="email" placeholder="name@mail.ru">
                     </div>
-                    <div class="form-group">
-                        <label for="email">Дата Создания</label>
-                        <input class="form-control" name="created_at">
-                    </div>
                     <br>
                     <button type="submit" class="btn btn-success">Подписаться</button>
                 </div>
