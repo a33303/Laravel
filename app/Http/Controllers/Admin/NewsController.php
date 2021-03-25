@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\NewsCreateRequest;
+use App\Http\Requests\NewsEditRequest;
 use App\Models\News;
 use App\Services\FakeNewsService;
 use Illuminate\Contracts\Foundation\Application;
@@ -10,6 +12,7 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 Use Illuminate\Http\Request;
 Use Illuminate\Http\Response;
+use Illuminate\Support\Str;
 
 class NewsController extends Controller
 {
@@ -18,8 +21,7 @@ class NewsController extends Controller
      */
     public function index()
     {
-        $objNews = new News();
-        $news = $objNews->getNews();
+        $news = News::all();
         return view('admin.news.index', ['news' => $news]);
     }
 
@@ -31,15 +33,14 @@ class NewsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param Request $request
+     * @param NewsCreateRequest $request
      * @return Response
      */
-    public function store(Request $request): Response
+    public function store(NewsCreateRequest $request): Response
     {
-        $request->validate([
-            'title'=>'required'
-        ]);
 
+        $data = $request->validated();
+        $data['slug']=Str::slug($data['title']);
         return response()->header();
     }
 
@@ -68,13 +69,14 @@ class NewsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param Request $request
+     * @param NewsEditRequest $request
      * @param int $id
      * @return Response
      */
-    public function update(Request $request, int $id): Response
+    public function update(NewsEditRequest $request, int $id): Response
     {
-        //
+        $data = $request->validated();
+        $data['slug']=Str::slug($data['title']);
     }
 
     /**

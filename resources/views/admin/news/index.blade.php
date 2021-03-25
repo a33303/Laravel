@@ -23,7 +23,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                @forelse($news as $new)
+                @forelse($news as $listNews)
                     <tr>
                         <td>{{ $news->id }}</td>
                         <td>{{ $news->title }}</td>

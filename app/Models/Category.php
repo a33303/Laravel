@@ -5,7 +5,9 @@ namespace App\Models;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use \Illuminate\Support\Collection;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Collection;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\DB;
 
@@ -13,15 +15,25 @@ class Category extends Model
 {
     use HasFactory;
 
-    public function getCategories(): Collection
+    protected $table = "categories";
+    protected $primaryKey = "id";
+
+
+    protected $fillable = [
+        'title',
+        'description',
+        'slug',
+    ];
+
+    public function news(): BelongsToMany
     {
-        return DB::table('categories')
-            //->select("id, title, slug, description, created_at")
-            ->get();
+        return $this->belongsToMany (News::class, 'categories_has_news', 'category_id', 'news_id'
+        );
     }
 
-    public function getCategory(int $id): array
+    public function newsTp(): HasMany
     {
-        return DB::table('categories')->find($id);
+        return $this->hasMany(NewsTmp::class, 'category_id', 'id');
     }
 }
+

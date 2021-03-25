@@ -5,7 +5,7 @@
 
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Изменить категорию</h1> &nbsp;
+            <h1 class="h3 mb-0 text-gray-800">Добавить категорию</h1> &nbsp;
             <strong>
                 <a href="{{ route('admin.categories.index') }}">Список категорий</a>
             </strong>
@@ -20,13 +20,11 @@
                     </div>
                 @endforeach
             @endif
-            <form action="{{ route('admin.categories.update'), ['category'=> $category] }}" method="POST">
-                @csrf
-                @method('PUT')
+            <form action="{{ route('admin.news.store')  }}" method="POST">
                 <div class="col-8">
                     <div class="form-group">
                         <label for="title">Наименование категории</label>
-                        <input type="text" class="form-control" placeholder="title" name="title" value="{{ $category->title }}">
+                        <input type="text" class="form-control" placeholder="title" name="title">
                         @if($errors->has('title'))
                             <div class="alert alert-danger">
                                 @foreach($errors-get('title') as $error)
@@ -37,7 +35,7 @@
                     </div>
                     <div class="form-group">
                         <label for="title">Описание категории</label>
-                        <textarea class="form-control" name="description">{!! $category->description !!}</textarea>
+                        <textarea class="form-control" name="description"></textarea>
                         @if($errors->has('title'))
                             <div class="alert alert-danger">
                                 @foreach($errors-get('title') as $error)

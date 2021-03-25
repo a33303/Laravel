@@ -54,6 +54,15 @@ Route::get('/login', [AuthController::class, 'index'])
 Route::get('/category', [CategoryNewsContoller::class, 'index'])
     ->name('category');
 
+Route::get('example/{category}', fn(\App\Models\Category $category) => $category);
+Route::get('/collection', function (){
+    $array = ['name' => 'Test', 'age' => 26, 'company' => 'Example',
+        'work' => 'Programmer', 'country' => 'Russia', 'city' => 'Moscow', 'rules' => [
+            ['id' => 1, 'title' => 'All previleges'],
+            ['id' => 2, 'title' => 'Example data']
+        ]];
+    $collect = collect($array);
+});
 
 /*Route::get('/add_news', [AddNewsController::class, 'add_news'])
     ->name('add_news');*/

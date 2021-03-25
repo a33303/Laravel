@@ -3,12 +3,16 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CategoryCreateRequest;
+use App\Http\Requests\CategoryEditRequest;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Response;
+use Illuminate\Support\Str;
+use function Illuminate\Events\queueable;
 
 class CategoryController extends Controller
 {
@@ -18,9 +22,28 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $objCategory = new Category();
-        $categories = $objCategory->getCategories();
-        return view('admin.news.categories.index', ['categories' => $categories]);
+        $categories = Category::with('newsTmp')->get();
+        ($categories->map(function ($category){
+            return [
+              'id' => $category->id,
+              'categoryTitle' => $category->title,
+              'news' => $category->newsTm->map(function($news){
+                  return [
+                    'id' => $news->id,
+                    'title' => $news->title
+                  ];
+              })
+            ];
+        }));
+        $categories = Category::select('id', 'title', 'description', 'created-at')
+            ->with('news')
+            ->orderBy('id', 'asc')
+            ->paginate(5);
+
+
+        return view('admin.news.categories.index', [
+            'categories' => $categories
+        ]);
     }
 
     /**
@@ -30,22 +53,27 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('admin.news.categories.add');
+        return view('admin.news.categories.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param Request $request
+     * @param CategoryCreateRequest $request
      * @return Response
      */
-    public function store(Request $request): Response
+    public function store(CategoryCreateRequest $request): Response
     {
-        $request->validate([
-            'title'=>'required'
-        ]);
+        $data = $request->validated();
+        $data['slug']=Str::slug($data['title']);
 
-        return response()->header();
+        $create = Category::create($data);
+        if($create){
+            return redirect()->route('admin.categories.index')->with('success', 'Запись успешно добавлена');
+        }
+
+        return back()->withInput()->with('errors', 'Не удалось добавить запись');
+
     }
 
     /**
@@ -62,33 +90,43 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param int $id
+     * @param Category $category
      * @return Response
      */
-    public function edit(int $id): Response
+    public function edit(Category $category): Response
     {
-        //
+        return view('admin.news.categories.index', [
+            'category' => $category
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param Request $request
-     * @param int $id
+     * @param CategoryEditRequest $request
+     * @param Category $category
      * @return Response
      */
-    public function update(Request $request, int $id): Response
+    public function update(CategoryEditRequest $request, Category $category): Response
     {
-        //
+
+        $data = $request->validated();
+        $data['slug']=Str::slug($data['title']);
+        $save = $category->fill($data)->save();
+        if($save){
+            return redirect()->route('admin.categories.index')->with('success', 'Запись успешно обновилась');
+        }
+
+        return back()->withInput()->with('errors', 'Не удалось обновить запись');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param int $id
+     * @param Category $category
      * @return Response
      */
-    public function destroy(int $id): Response
+    public function destroy(Category $category): Response
     {
         //
     }

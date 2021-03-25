@@ -15,15 +15,12 @@ class News extends Model
 {
     use HasFactory;
 
-    public function getNews(): Collection
-    {
-        return DB::table('news')
-            //->select("id, title, slug, description, created_at")
-            ->get();
-    }
+    protected $table = "news";
+    protected $primaryKey = "id";
 
-    public function getCategory(int $id): array
-    {
-        return DB::table('news')->find($id);
-    }
+    protected $fillable = [
+        'title',
+        'description',
+        'status'
+    ];
 }

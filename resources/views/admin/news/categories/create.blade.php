@@ -20,11 +20,18 @@
                     </div>
                 @endforeach
             @endif
-            <form action="{{ route('admin.categories.store')  }}" method="POST">
+            <form action="{{ route('admin.categories.store', ['name' => 'example'])  }}" method="POST">
                 <div class="col-8">
                 <div class="form-group">
                     <label for="title">Наименование категории</label>
                     <input type="text" class="form-control" placeholder="title" name="title">
+                    @if($errors->has('title'))
+                        <div class="alert alert-danger">
+                        @foreach($errors-get('title') as $error)
+                               <p style="margin-bottom: 0;">{{ $error }}</p>
+                            </div>
+                        @endforeach
+                    @endif
                 </div>
                     <div class="form-group">
                         <label for="title">Описание категории</label>

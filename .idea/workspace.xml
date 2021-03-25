@@ -1,30 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e99a7d12-6aaa-4346-a48e-ded82377b01c" name="Default Changelist" comment="Home_work_5">
-      <change afterPath="$PROJECT_DIR$/app/Models/Category.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/News.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2021_03_11_184018_create_categories_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2021_03_11_184151_create_news_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2021_03_11_184223_create_categories_has_news_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/seeders/CategorySeeder.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/seeders/NewsSeeder.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/news/categories/show.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/news/show.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/laravel.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/laravel.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+    <list default="true" id="e99a7d12-6aaa-4346-a48e-ded82377b01c" name="Default Changelist" comment="Home_work_5&#10;Ошибка на странице admin/news&#10;&#10;Property [id] does not exist on this collection instance - не смог устранить">
+      <change afterPath="$PROJECT_DIR$/app/Http/Requests/CategoryCreateRequest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Requests/CategoryEditRequest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Requests/FeedbackCreateRequest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Requests/FeedbackExportRequest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Requests/NewsCreateRequest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Requests/NewsEditRequest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/NewsTmp.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2021_03_15_194905_create_news_tmp_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/ru/auth.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/ru/pagination.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/ru/passwords.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/ru/validation-inline.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/ru/validation.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/news/create.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/Feature/AdminAddCategorytest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/Feature/AdminAddNewstest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/Feature/AdminCategorytest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/Feature/AdminNewstest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/Feature/Admintest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/Feature/Categorytest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/Feature/Feetbacktest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/Feature/Newstest.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/CategoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/CategoryController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/NewsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/NewsController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/FeedbackController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/FeedbackController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/NewsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/NewsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Category.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Category.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/News.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/News.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/admin/feetback/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/feetback/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/news/add.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/news/add.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/news/categories/add.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/news/categories/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/news/categories/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/news/categories/edit.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/admin/news/categories/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/news/categories/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/admin/news/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/news/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/auth/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/feedback/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/feedback/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/news/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/news/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -163,7 +180,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/admin/news" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/lang/ru" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -176,6 +193,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\Программирование\Laravel\homestead\code\laravel\resources\lang\ru" />
       <recent name="F:\Программирование\Laravel\homestead\code\laravel\resources\views\admin\news" />
       <recent name="F:\Программирование\Laravel\homestead\code\laravel\app\Models" />
       <recent name="F:\Программирование\Laravel\homestead\code\laravel\resources\views\news" />
@@ -225,7 +243,19 @@
       <workItem from="1615430347552" duration="851000" />
       <workItem from="1615487029900" duration="568000" />
       <workItem from="1615487867551" duration="6053000" />
-      <workItem from="1615493999540" duration="159000" />
+      <workItem from="1615493999540" duration="778000" />
+      <workItem from="1615577153174" duration="3615000" />
+      <workItem from="1615659949072" duration="10391000" />
+      <workItem from="1615835227660" duration="73000" />
+      <workItem from="1615835565993" duration="3038000" />
+      <workItem from="1616008832451" duration="2502000" />
+      <workItem from="1616039110556" duration="357000" />
+      <workItem from="1616095056340" duration="1664000" />
+      <workItem from="1616439448207" duration="1137000" />
+      <workItem from="1616440777321" duration="590000" />
+      <workItem from="1616479620697" duration="14595000" />
+      <workItem from="1616526170504" duration="1701000" />
+      <workItem from="1616699581390" duration="302000" />
     </task>
     <task id="LOCAL-00001" summary="Home_work2">
       <created>1613853656563</created>
@@ -248,7 +278,14 @@
       <option name="project" value="LOCAL" />
       <updated>1615104578297</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Home_work_5&#10;Ошибка на странице admin/news&#10;&#10;Property [id] does not exist on this collection instance - не смог устранить">
+      <created>1615494252369</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1615494252370</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -271,7 +308,8 @@
     <MESSAGE value="Home_work2" />
     <MESSAGE value="Home_work3" />
     <MESSAGE value="Home_work4" />
-    <option name="LAST_COMMIT_MESSAGE" value="Home_work4" />
+    <MESSAGE value="Home_work_5&#10;Ошибка на странице admin/news&#10;&#10;Property [id] does not exist on this collection instance - не смог устранить" />
+    <option name="LAST_COMMIT_MESSAGE" value="Home_work_5&#10;Ошибка на странице admin/news&#10;&#10;Property [id] does not exist on this collection instance - не смог устранить" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
